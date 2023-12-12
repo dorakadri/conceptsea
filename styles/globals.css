@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Exo&family=Shantell+Sans:ital,wght@0,800;1,800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.main {
+    width: 100vw;
+    min-height: 100vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    padding: 120px 24px 160px 24px;
+    pointer-events: none;
+  } 
+
+  @media screen and (max-width: 640px) {
+    .main {
+      padding: 0;
+    }
+  }
+
+  .gradient {
+    height: fit-content;
+    z-index: 3;
+    width: 100%;
+    max-width: 640px;
+    background-image: radial-gradient(
+        at 27% 37%,
+        hsla(215, 98%, 61%, 1) 0px,
+        transparent 0%
+      ),
+      radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 1) 0px, transparent 50%),
+      radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 1) 0px, transparent 50%),
+      radial-gradient(at 10% 29%, hsla(256, 96%, 67%, 1) 0px, transparent 50%),
+      radial-gradient(at 97% 96%, hsla(38, 60%, 74%, 1) 0px, transparent 50%),
+      radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 1) 0px, transparent 50%),
+      radial-gradient(at 79% 53%, hsla(343, 68%, 79%, 1) 0px, transparent 50%);
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    filter: blur(100px) saturate(150%);
+    top: 80px;
+    opacity: 0.15;
+  }
+
+.active{
+  color: #3b82f6;
+  position: relative;
+  font-weight: 500;
+
+}
+
+.active::after{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  height: 3px;
+  content: "";
+  background-image: linear-gradient(to right top, #06b6d4, #3b82f6);
+
+
+} 
+
+.link:hover{
+
+  position: relative;
+  color: #3b83f6ea;
+  transition: transform 0.5s ease-in-out;
+}
+
+.link:hover::after{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  height: 3px;
+  content: "";
+  background-image: linear-gradient(to right top, #06b6d4, #3b82f6);
+  transition: transform 0.5s ease-in-out;
+} 
+
+
+.btn_gradient{
+  @apply rounded-full border border-cyan-500 bg-gradient-to-r from-cyan-500 to-blue-500 py-1.5 px-5 text-white transition-all hover:from-white hover:to-white hover:text-black ;
+
+}
+
+.title{
+  @apply  font-exo font-extrabold text-7xl leading-[1.15] pb-3
+} 
+
+.ideaone{
+  @apply font-exo  text-7xl leading-[1.15] pb-3
+}
+.idea{
+  @apply font-dancing  font-extrabold  text-[9rem] leading-[1.15] pb-3
+}
+.subtitle {
+ @apply font-exo text-2xl 
+}
+.textgradient{
+  @apply  text-3xl z-50 font-bold text-white  bg-gradient-to-r from-cyan-500 to-blue-500 p-2  translate-x-4 -skew-y-3 uppercase 
+
+}
+.sidebar {
+  width: 0;
+  overflow: hidden;
+  transition: width 0.3s ease-in-out; /* Adjust the duration and timing function as needed */
+
+}
+
+.gradient_yellow
+ { 
+
+  @apply absolute -z-50  blur-3xl opacity-40 h-48 w-48 rounded-full top-[-10px] right-[-10px] bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500
+
+ 
+
+}
+
+.gradient_green{
+  @apply absolute  blur-3xl opacity-40 h-48 w-48  rounded-full top-[8px] left-[-23px]  bg-gradient-to-r from-green-400 to-green-500
+
+ 
+}
+
+.gradient_violet{
+  @apply absolute -z-50 blur-3xl opacity-40 h-48 w-48  rounded-full top-[-42px] left-[150px] bg-gradient-to-r from-pink-500 to-violet-500
+
+ 
+}
+
+.gradient_red{
+  @apply absolute -z-50 blur-3xl opacity-40 h-48 w-48  rounded-full top-[-42px] left-[312px] bg-gradient-to-r from-red-300 to-red-600
+
+ 
+}
