@@ -3,6 +3,7 @@ const { models, model, Schema } = require("mongoose");
 const ConceptSchema = new Schema({
   userclerk: {
     type: String,
+    ref: 'User',
   },
 
   title: {

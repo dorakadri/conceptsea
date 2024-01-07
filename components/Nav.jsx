@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { SignInButton, SignUpButton, UserButton, useUser } from '@clerk/nextjs';
 const Nav = () => {
   const pathname = usePathname();
-  const {user,isLoaded}=useUser();
+  const {user}=useUser();
   return (
     <nav className='justify-between w-full  items-center flex mb-16 pt-5   '>
        <div className='flex items-center justify-between  gap-6 font-exo'> Conceptsea</div>

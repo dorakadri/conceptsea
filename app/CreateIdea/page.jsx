@@ -12,7 +12,7 @@ cloudinary.config({
 
 async function savedata(dataa) {
   try {
-    console.log(dataa);
+  
     await connect();
     const data = new Concept(dataa);
     await data.save();
@@ -24,9 +24,10 @@ async function savedata(dataa) {
 }
 const CreateIdea = () => {
   const { userId } = auth();
+  console.log(userId);
   async function CreateIdea(data) {
     "use server";
-    const regex = /^type/;
+
 
     const title = data.get("title");
     const desc = data.get("desc");
@@ -38,11 +39,12 @@ const CreateIdea = () => {
       data.get("inputColor4"),
       data.get("inputColor5"),
     ];
+    console.log(colors)
     const tags = data.get("tags");
     const typography = [];
 
     for (const [key, value] of data.entries()) {
-      if (regex.test(key)) {
+      if (key.startsWith("type")) {
         typography.push(value);
       }
     }
@@ -58,7 +60,7 @@ const CreateIdea = () => {
             return;
           }
           resolve(result);
-          console.log(result.url);
+   
         })
         .end(buffer);
     });
@@ -73,7 +75,7 @@ const CreateIdea = () => {
       image: url.url,
     };
     const returneddata = await savedata(dataa);
-
+   console.log(returneddata)
     if (returneddata.status === 200) {
       redirect("/");
     }

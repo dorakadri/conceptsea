@@ -1,13 +1,13 @@
 import React from 'react'
 import HomeCard from './HomeCard'
 
-const Feed = () => {
+const Feed = ({data}) => {
   return (
-    <div className='mt-16 '>
-<div className="grid grid-cols-4 gap-4 text-center">
-  {[1,2,3,4,5,6].map((e,i) =>(
+    <div className='my-12 '>
+<div className="grid grid-cols-4 gap-6 text-center">
+  {data?.map((concept,i) =>(
 
-    <HomeCard key={i}/>
+    <HomeCard key={i} concept={concept}   />
   ))}
     
 </div>

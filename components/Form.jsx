@@ -14,7 +14,7 @@ const Formidea = ({CreateIdea}) => {
   const [open, setOpen] = useState(false);
   const [typography, setTypography] = useState([]);
 
-  const [colors, setColors] = useState([]);
+  const [colors, setColors] = useState(["","","","","",""]);
 
   const handleimageClick = () => {
     img.current.click();
@@ -49,7 +49,7 @@ const Formidea = ({CreateIdea}) => {
           />
         </div>
         <div className="flex flex-col gap-5 ">
-          <label className="font-exo text-xl font-semibold ">Add some tags</label>
+          <label className="font-exo text-xl font-semibold ">Add some tags <span className="font-exo text-xs font-light text-light-gray  ">(separated by ",")</span> </label>
           <input
                 required
             type="text"

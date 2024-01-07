@@ -3,9 +3,10 @@ import React, { useRef} from "react";
 const ColorInput = ({ setColors, colors }) => {
   const colorInputRef = useRef([]);
 
-  const handleDivClick = (index, color) => {
+
+  const handleDivClick = (index) => {
     colorInputRef.current[index].click();
-    setColors((prev) => [...prev, color]);
+
   };
 
   const handleColorChange = (e, index) => {
@@ -13,9 +14,11 @@ const ColorInput = ({ setColors, colors }) => {
     setColors((prev) => {
       const updatedColors = [...prev];
       updatedColors[index] = selectedColor;
+      
       return updatedColors;
     });
   };
+
 
   return (
     <div className="flex flex-col gap-5 ">
@@ -29,16 +32,15 @@ const ColorInput = ({ setColors, colors }) => {
                 colors[i] ? "" : "border-dashed border-4"
               } rounded-2xl flex items-center justify-center`}
               key={i}
-              onClick={() => handleDivClick(i, colors[i])}
+              onClick={() => handleDivClick(i)}
               style={{ backgroundColor: colors[i] }}
             >
               <input
-       
                 type="color"
                 ref={(element) => (colorInputRef.current[i] = element)}
                 onChange={(e) => handleColorChange(e, i)}
                 name={`inputColor${i}`}
-                className="invisible"
+                className="invisible inputclorpicker"
               />
             </div>
           ))}

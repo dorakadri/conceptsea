@@ -1,8 +1,9 @@
-const { models, model, Schema } = require("mongoose");
+const { models, model, Schema, default: mongoose } = require("mongoose");
 
 const UserSchema = new Schema({
+
     userclerk:{
-    type: String,
+      type: String,
     unique: [true, "email already exists"],
     },
   email: {

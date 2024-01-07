@@ -2,6 +2,8 @@ import { Webhook } from 'svix'
 import { headers } from 'next/headers'
 import { connect } from '@utils/database'
 import User from '@models/user'
+import { ObjectId } from 'mongodb'
+
 
  
 export async function POST(req) {
@@ -52,32 +54,43 @@ export async function POST(req) {
   // Get the ID and type
  
   const eventType = evt.type;
-
+console.log(eventType)
 if(eventType==='user.created'||eventType==='user.updated'){
     const { id  ,profile_image_url,first_name,last_name} = evt.data;
     const { email_address} = evt.data.email_addresses[0];
 
     try {
-        await connect();
-        const clerkident=id
-      const user =  await User.updateOne(
-            { email: email_address },
-            {
-              $set: {
-                userclerk:clerkident,
-                image: profile_image_url,
-                firstName: first_name,
-                lastName: last_name,
+        await connect(); 
+        if(eventType==='user.created'){
+          const user = await User.create({
+            userclerk:id,
+            email:email_address,
+            lastName:last_name,
+            firstName:first_name,
+            image: profile_image_url,
+          })
+
+          console.log('User created:', user);
+        }
+
+        if (eventType === 'user.updated') {
+          const userUpdated = await User.updateOne(
+              { userclerk: id },
+              {
+                  $set: {
+                      email: email_address,
+                      lastName: last_name,
+                      firstName: first_name,
+                      image: profile_image_url,
                 
+                  },
               }
-            },
-            { upsert: true }
           );
-        
-          console.log('User upserted:', user);
-    
-      
+          console.log('User updated:', userUpdated);
+      }
+
       } catch (error) {
+        console.log(error)
         return new Response('cant update or create user on mongodb', { status: 200 })
       }
 } 

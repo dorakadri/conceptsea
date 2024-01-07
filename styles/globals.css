@@ -4,7 +4,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 
+
+
+.fade-out {
+  animation: fadeOut 1.5s ease-in-out; /* Adjust the duration as needed */
+}
 .main {
     width: 100vw;
     min-height: 100vh;
@@ -88,6 +101,11 @@
 
 .btn_gradient{
   @apply rounded-full border border-cyan-500 bg-gradient-to-r from-cyan-500 to-blue-500 py-1.5 px-5 text-white transition-all hover:from-white hover:to-white hover:text-black ;
+
+}
+
+.ship_gradient{
+  @apply rounded-full border border-cyan-500 bg-gradient-to-r from-cyan-500 to-blue-500 p-1 text-white transition-all hover:from-white hover:to-white hover:text-black ;
 
 }
 
